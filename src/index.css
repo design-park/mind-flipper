@@ -1,68 +1,273 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+/* --- Palette (tweak anytime) --- */
+:root{
+  --ink:#2a2a2a;
+  --pink:#ff6ec7;
+  --pink-200:#ffb6e6;
+  --pink-50:#fffafc;
+  --lavender-25:#f9f9ff;
+  --shadow:#d9c8d1;
 }
 
 body {
   margin: 0;
+  font-family: "Quicksand", sans-serif;
+  background: #fff; /* default for other pages */
+}
+
+.landingPage {
+  background: linear-gradient(135deg, #f3d4e1 0%, #f5a9cf 100%);
+  min-height: 100vh;   /* full screen height */
   display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+.container {
+  width: 70%;              /* Take 70% of screen width */
+  max-width: 800px;        /* Optional: prevent it from getting too wide */
+  margin: 0 auto;          /* Center horizontally */
+  display: flex;           
+  flex-direction: column;  /* Stack children vertically */
+  align-items: center;     /* Center horizontally (for items smaller than container) */
+  justify-content: center; /* Center vertically if you want full-height */
+  min-height: 100vh;       /* Optional: make container full viewport height */
+  padding: 2rem;           /* Optional: add some spacing */
+  box-sizing: border-box;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
+.titleText {
+  font-family: "Jersey 10", sans-serif;
+  color: #2a2a2a;
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.textArea {
+  width: 100%;
+  height: 200px;
+  padding: 1rem;
+  margin: 1rem 0;
+  font-size: 18px;            /* slightly bigger text */
+  font-weight: 600;           /* bolder font */
+  font-family: "Quicksand", sans-serif;
+  color: #2a2a2a;             /* strong dark text */
+  background-color: #ffffff;  /* pure white for max contrast */
+  border: 3px solid #ff6ec7;  /* bold pink border */
+  border-radius: 16px;         /* playful but confident */
+  outline: none;
+  transition: all 0.2s ease-in-out;
+}
+
+.textArea::placeholder {
+  color: #555;                 /* darker gray placeholder */
+}
+
+.textArea:focus {
+  background-color: #fff5fb;   /* subtle pink glow inside */
+  border-color: #ff3fa2;       /* brighter bold border on focus */
+  box-shadow: 0 0 12px rgba(255, 63, 162, 0.6); /* stronger glow */
+}
+
+.primaryButton {
+  background-color: #ff6ec7;
+  border: none;
+  padding: 0.8rem 1.6rem;
+  border-radius: 12px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #fff;
   cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  text-transform: uppercase;
+  -webkit-text-stroke: 1px #000;
+  text-shadow: 
+    1px 1px 0 #000, 
+   -1px 1px 0 #000, 
+    1px -1px 0 #000, 
+   -1px -1px 0 #000;
+  box-shadow: 4px 4px 0px #2a2a2a; /* default pixel shadow */
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+.primaryButton:hover {
+  background-color: #ff8edc;
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px #2a2a2a;
+}
+
+.primaryButton:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px #2a2a2a;
+}
+
+
+.sparkleIcon {
+  width: 18px;     /* adjust size */
+  height: 18px;
+  margin-left: 6px;
+  vertical-align: middle;
+}
+
+.reflectionPage {
+  background: linear-gradient(135deg, #f3d4e1 0%, #f5a9cf 100%);
+  min-height: 100vh;   /* full screen height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;       /* space around card on small screens */
+  box-sizing: border-box;
+}
+
+.reflectionContainer {
+  width: 90%;
+  max-width: 800px;
+  height: 90dvh;              /* 👈 take most of viewport, but not all */
+  max-height: 900px;          /* 👈 optional limit for large screens */
+  margin: 5vh auto;           /* 👈 centers with space above/below */
+  
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  overflow: hidden;           /* keeps corners clean */
+}
+
+/* Header sits inside the card (not a separate block) */
+.header{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  padding:18px 20px;
+  border-bottom:1px dashed #f1e6ee; /* soft divider */
+  background:var(--lavender-25);
+}
+
+.header .rabbit{
+  width:150px;
+  height:auto;
+  animation: hop 1.4s ease-in-out infinite;
+}
+@keyframes hop{
+  0%,100%{ transform:translateY(0) }
+  50%{ transform:translateY(-4px) }
+}
+
+.header h2{
+  margin:0;
+  font-size:27px;
+  font-style: italic;
+  line-height:1.3;
+  font-weight:700;
+  color:var(--ink);
+}
+
+/* Chat fills all remaining space between header and input */
+.chatArea {
+  flex: 1;
+  display: flex;
+  flex-direction: column;  /* 👈 each message stacked vertically */
+  padding: 16px 18px 8px;
+  overflow-y: auto;
+  background: var(--lavender-25);
+  -webkit-overflow-scrolling: touch;
+}
+
+.chatBubble {
+  display: inline-block;       /* 👈 shrink to fit content */
+  max-width: 60%;              /* 👈 cap width */
+  padding: 10px 14px;
+  border-radius: 16px;
+  font-size: 15px;
+  line-height: 1.45;
+  word-break: break-word;
+  margin: 6px 0;
+  animation: fadeIn 0.25s ease;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Rabbit bubble on the left */
+.rabbitBubble {
+  align-self: flex-start;      /* align left */
+  background: #ffe9f6;
+  border: 1.5px solid var(--pink-200);
+  color: var(--ink);
+  border-top-left-radius: 6px;
+}
+
+/* User bubble on the right */
+.userBubble {
+  align-self: flex-end;        /* align right */
+  background: #e6f3ff;
+  border: 1.5px solid #b3d9ff;
+  color: #114;
+  border-top-right-radius: 6px;
+}
+
+
+/* Input stays attached to the bottom edge of the card */
+.inputArea{
+  display:flex;
+  gap:10px;
+  padding:12px;
+  border-top:1px dashed #f1e6ee; /* same family as header divider */
+  background:var(--lavender-25);
+  flex-shrink: 0; 
+}
+
+.inputArea textarea{
+  flex:1;
+  min-height:42px;
+  max-height:140px;
+  padding:10px 12px;
+  font-size:15px;
+  border:2px solid var(--pink-200);
+  border-radius:12px;
+  background:#fff;
+  color:var(--ink);
+  outline:none;
+  resize:none;
+  overflow-y:auto;
+  transition:border-color .2s ease, box-shadow .2s ease;
+}
+.inputArea textarea:focus{
+  border-color:var(--pink);
+  box-shadow:0 0 8px rgba(255,110,199,.25);
+}
+
+.sendButton{
+  padding:10px 14px;
+  font-size:18px;
+  border:none;
+  border-radius:12px;
+  background:var(--pink);
+  color:#fff;
+  cursor:pointer;
+  transition:transform .1s ease, background-color .2s ease;
+}
+.sendButton:hover{ background:#ff8edc; transform:translateY(-2px); }
+.sendButton:active{ transform:translateY(1px); }
+
+/* Responsive tweaks */
+@media (max-width:720px){
+  .reflectionContainer{ height:min(90vh, 900px); }
+  .chatBubble{ max-width:88%; }
+  .header h2{ font-size:16px; }
+  .header .rabbit{ width:48px; }
+}
+
+@media (max-width: 420px) {
+  .inputArea {
+    flex-direction: column;
+    align-items: stretch;
   }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
+  .sendButton {
+    width: 100%;
   }
 }
+
